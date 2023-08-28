@@ -1,0 +1,43 @@
+.singInContainer {
+  width: 30%;
+  height: 50vh;
+  margin: 10vh auto;
+  padding: 5vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 7vh;
+  background: linear-gradient(90deg, #0061fe, #be38f3);
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  border-radius: 20px;
+}
+.singInContainer div {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.singInContainer div input {
+  width: 100%;
+  padding: 1vh;
+  border: none;
+  outline: 1px solid gray;
+  border-radius: 10px;
+}
+.singInContainer div input:focus {
+  outline: 2px solid rgb(0, 0, 0);
+}
+.singInContainer button {
+  cursor: pointer;
+  border: none;
+  padding: 2vh 4vh;
+  border-radius: 20px;
+  font-size: large;
+  font-weight: bold;
+}
+.singInContainer button:hover {
+  color: white;
+  background: linear-gradient(90deg, #e45c01, #f78502, #f79b45);
+}/*# sourceMappingURL=styles.module.css.map */

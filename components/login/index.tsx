@@ -1,7 +1,10 @@
 "use client";
-import React, { useState } from "react";
-
+import ShopContext from "@/context";
+import { useRouter } from "next/navigation";
+import React, { useContext, useState } from "react";
+import styles from "../singin/styles.module.css";
 export default function Login() {
+  const { findUser, setFindUser } = useContext(ShopContext) as any;
   interface User {
     username: string;
     password: string;
@@ -9,17 +12,17 @@ export default function Login() {
   const userInfo: User[] = JSON.parse(
     localStorage.getItem("userLogin") || "[]"
   );
-  const [findUser, setFindUser] = useState<User | undefined>(
-    JSON.parse(localStorage.getItem("giris") || "[]")
-  );
-  const [user, setUser] = useState({ username: "", password: "" });
+  // const [findUser, setFindUser] = useState<User | undefined>(
+  //   JSON.parse(localStorage.getItem("giris") || "[]")
+  // );
+  const [user, setUser] = useState<User>({ username: "", password: "" });
   const singinOnchange = (e: any) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
-
+  const router = useRouter();
   const formSubmit = (e: any) => {
     e.preventDefault();
-    if (user.username.length === 0 || user.password.length === 0) {
+    if (user.username?.length === 0 || user.password?.length === 0) {
       alert("gerekli bilgileri duldurun");
       return;
     }
@@ -29,22 +32,39 @@ export default function Login() {
     );
     if (userSingin === undefined) {
       alert("giriş başarısız");
+      return;
     } else alert("giriş başarılı");
     setFindUser(userSingin);
     localStorage.setItem("giris", JSON.stringify(userSingin));
+    router.push("/");
   };
 
   console.log(userInfo);
   return (
     <div>
-      <form onSubmit={formSubmit}>
-        <input type="text" name="username" onChange={singinOnchange} />
-        <input type="text" name="password" onChange={singinOnchange} />
+      <form className={styles.singInContainer} onSubmit={formSubmit}>
+        <div>
+          <img src="email.png" alt="" />
+          <input
+            placeholder="E-mail Address"
+            type="email"
+            name="username"
+            onChange={singinOnchange}
+          />
+        </div>
+        <div>
+          <img src="pass.png" alt="" />
+
+          <input
+            placeholder="Password"
+            type="text"
+            name="password"
+            onChange={singinOnchange}
+          />
+        </div>
+
         <button type="submit">Log in</button>
       </form>
-      <h1>
-        {findUser?.username} {findUser?.password}
-      </h1>
     </div>
   );
 }

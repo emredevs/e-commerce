@@ -1,0 +1,27 @@
+.navbarContainer {
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-weight: bold;
+    font-size: large;
+
+    div {
+
+
+        &:hover {
+
+            border-bottom: 2px solid orangered;
+
+        }
+
+        a {
+            transition: all 0.2s;
+
+            &:hover {
+                color: orangered;
+            }
+        }
+    }
+}

@@ -1,19 +1,24 @@
 "use client";
+import ShopContext from "@/context";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
-
+import React, { useContext } from "react";
+import styles from "./styles.module.css";
 export default function Singin() {
+  const { user, setUser, userLogin, setUserLogin } = useContext(
+    ShopContext
+  ) as any;
   interface Login {
     username: string;
     password: string;
   }
-  const [user, setUser] = useState<Login[]>(
-    JSON.parse(localStorage.getItem("userLogin") || "[]")
-  );
-  const [userLogin, setUserLogin] = useState<Login>({
-    username: "",
-    password: "",
-  });
+  // context API kullanamdan önceki state yönetimi
+  // const [user, setUser] = useState<Login[]>(
+  //   JSON.parse(localStorage.getItem("userLogin") || "[]")
+  // );
+  // const [userLogin, setUserLogin] = useState<Login>({
+  //   username: "",
+  //   password: "",
+  // });
   const router = useRouter();
   const userOnchange = (e: any) => {
     setUserLogin({ ...userLogin, [e.target.name]: e.target.value });
@@ -24,7 +29,9 @@ export default function Singin() {
       alert("gerekli bilgileri duldurun");
       return;
     }
-    const userFind = user.find((user) => user.username === userLogin.username);
+    const userFind = user.find(
+      (users: any) => users.username === userLogin.username
+    );
 
     if (userFind !== undefined) {
       alert("varolan kullanıcı");
@@ -34,24 +41,34 @@ export default function Singin() {
     localStorage.setItem("userLogin", JSON.stringify([...user, userLogin]));
     setUserLogin({ username: "", password: "" });
     alert("kayıt başarılı");
+    localStorage.setItem("giris", JSON.stringify(""));
+
     router.push("/login");
   };
 
   console.log(user);
   return (
-    <form onSubmit={formSubmit}>
-      <input
-        name="username"
-        type="text"
-        value={userLogin.username}
-        onChange={userOnchange}
-      />
-      <input
-        name="password"
-        type="text"
-        value={userLogin.password}
-        onChange={userOnchange}
-      />
+    <form className={styles.singInContainer} onSubmit={formSubmit}>
+      <div>
+        <img src="email.png" alt="" />
+        <input
+          placeholder="E-mail Address"
+          name="username"
+          type="email"
+          value={userLogin.username}
+          onChange={userOnchange}
+        />
+      </div>
+      <div>
+        <img src="pass.png" alt="" />
+        <input
+          placeholder="Password"
+          name="password"
+          type="text"
+          value={userLogin.password}
+          onChange={userOnchange}
+        />
+      </div>
       <button type="submit">Sing in</button>
     </form>
   );

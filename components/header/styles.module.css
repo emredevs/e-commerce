@@ -1,0 +1,28 @@
+.headerContainer {
+  width: 95%;
+  padding: 10px;
+  margin: 10px auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0px 3px 23px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+}
+.headerContainer h2 a {
+  color: #FF9920;
+}
+.headerContainer div button {
+  cursor: pointer;
+  background-color: #ae445a;
+  padding: 10px;
+  margin: 0 10px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+}
+.headerContainer div button a {
+  color: white;
+}
+.headerContainer div button:hover {
+  background-color: #FF9920;
+}/*# sourceMappingURL=styles.module.css.map */

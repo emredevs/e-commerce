@@ -1,0 +1,39 @@
+.shopListContainer {
+  width: 90%;
+  margin: 5vh auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 5vh;
+}
+.shopListContainer .ShopListBox {
+  padding: 8px;
+  width: 20%;
+  height: 400px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.shopListContainer .ShopListBox img {
+  width: 100%;
+  height: 250px;
+}
+.shopListContainer .ShopListBox button {
+  background: linear-gradient(90deg, #fde577, #e01b24);
+  cursor: pointer;
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  padding: 10px;
+}
+.shopListContainer .ShopListBox button:hover {
+  background: linear-gradient(254deg, #fde577, #e01b24);
+}/*# sourceMappingURL=styles.module.css.map */
