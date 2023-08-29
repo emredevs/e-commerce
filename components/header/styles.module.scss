@@ -18,7 +18,29 @@
     }
 
     div {
+        display: flex;
+            align-items: center;
+        
+            .basketBtn {
+        
+        
+                a {
+                    display: flex;
+        
+                    sup {
+                        font-size: large;
+                        border: 1px solid gray;
+                        border-radius: 50%;
+                        padding: 2px 5px;
+                        color: black;
+                        background-color: white;
+        
+                    }
+                }
+            }
         button {
+            color: white;
+                height: 40px;
             cursor: pointer;
             background-color: #ae445a;
             padding: 10px;
@@ -39,4 +61,28 @@
         }
     }
 
+}
+@media (max-width:530px) {
+
+    .headerContainer {
+
+        h2 {
+            a {
+                font-weight: 600;
+            }
+        }
+
+        div {
+
+            span {
+                display: none;
+            }
+
+            button {
+                padding: 5px 10px;
+                margin: 0px 3px 0px 0px;
+            }
+        }
+
+    }
 }

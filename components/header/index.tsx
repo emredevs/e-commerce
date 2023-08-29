@@ -4,6 +4,7 @@ import React, { useContext } from "react";
 import styles from "./styles.module.css";
 import ShopContext from "@/context";
 import Navbar from "../navbar";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 export default function Header() {
   const { findUser, setFindUser, basket } = useContext(ShopContext) as any;
   //   interface User {
@@ -33,7 +34,9 @@ export default function Header() {
 
       {findUser?.username && (
         <div>
-          <span>{findUser?.username}</span>
+          <span>
+            {findUser?.username?.slice(0, findUser?.username.indexOf("@"))}
+          </span>
           <button
             onClick={() => {
               setFindUser({ username: "", password: "" });
@@ -43,21 +46,10 @@ export default function Header() {
             out
           </button>
 
-          <button>
+          <button className={styles.basketBtn}>
             <Link href={"/basket"}>
-              Basket
-              <sup
-                style={{
-                  fontSize: "large",
-                  border: "1px solid gray",
-                  borderRadius: "50%",
-                  padding: "2px 5px",
-                  color: "black",
-                  backgroundColor: "white",
-                }}
-              >
-                {basket.length}
-              </sup>
+              <ShoppingCartIcon />
+              <sup>{basket.length}</sup>
             </Link>
           </button>
         </div>

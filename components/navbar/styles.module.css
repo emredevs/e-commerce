@@ -1,5 +1,5 @@
 .navbarContainer {
-  width: 70%;
+  width: 60%;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -13,4 +13,36 @@
 .navbarContainer a:hover {
   color: orangered;
   border-bottom: 2px solid orangered;
+}
+
+@media (max-width: 1000px) {
+  .navbarContainer div {
+    border-right: 2px solid gray;
+    padding: 0 10px;
+    height: 5vh;
+  }
+  .navbarContainer div:last-child {
+    border-right: none;
+  }
+}
+@media (max-width: 940px) {
+  .navbarContainer {
+    width: 50%;
+    height: 8vh;
+    justify-content: flex-start;
+    overflow-x: scroll;
+  }
+  .navbarContainer div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: -moz-fit-content;
+    width: fit-content;
+    text-align: center;
+  }
+}
+@media (max-width: 640px) {
+  .navbarContainer {
+    width: 35%;
+  }
 }/*# sourceMappingURL=styles.module.css.map */

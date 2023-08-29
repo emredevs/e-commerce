@@ -1,0 +1,25 @@
+.basketContainer {
+  width: 90%;
+  margin: 5vh auto;
+}
+.basketContainer .basketBox {
+  width: 80%;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px auto;
+  border: 1px solid gray;
+  border-radius: 20px;
+}
+.basketContainer .basketBox .basketInfo {
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.basketContainer .basketBox .basketInfo img {
+  width: 30%;
+  height: 200px;
+}/*# sourceMappingURL=styles.module.css.map */
