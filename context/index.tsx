@@ -14,6 +14,8 @@ interface ShopContextType {
   setFindUser: React.Dispatch<React.SetStateAction<User | undefined>>;
   userLogin: User;
   setUserLogin: React.Dispatch<React.SetStateAction<User>>;
+  basket: string[];
+  setBasket: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
 const ShopContext = createContext<ShopContextType | undefined>(undefined);
@@ -33,7 +35,7 @@ export function ShopContextProvider({ children }: ShopContextProviderProps) {
     username: "",
     password: "",
   });
-
+  const [basket, setBasket] = useState<string[]>([]);
   const values: ShopContextType = {
     user,
     setUser,
@@ -41,6 +43,8 @@ export function ShopContextProvider({ children }: ShopContextProviderProps) {
     setFindUser,
     userLogin,
     setUserLogin,
+    basket,
+    setBasket,
   };
 
   return <ShopContext.Provider value={values}>{children}</ShopContext.Provider>;

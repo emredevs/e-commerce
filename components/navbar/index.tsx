@@ -13,9 +13,12 @@ export default function Navbar() {
   }, []);
   return (
     <div className={styles.navbarContainer}>
+      <div>
+        <Link href={"/"}>Home</Link>
+      </div>
       {menu.map((menu, index) => (
         <div key={index}>
-          <Link href={`/${menu}`}>{menu}</Link>
+          <Link href={`/categories/${menu}`}>{menu}</Link>
         </div>
       ))}
     </div>

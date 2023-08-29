@@ -3,7 +3,7 @@
     margin: 5vh auto;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 5vh;
 
@@ -41,18 +41,20 @@
 
 
         button {
-
-            background: -webkit-linear-gradient(90deg, #fde577, #e01b24);
-            background: linear-gradient(90deg, #fde577, #e01b24);
+            width: 90%;
+                font-size: large;
+                font-weight: 600;
+        
             cursor: pointer;
             border: none;
-            outline: none;
+            outline: 2px solid #e01b24;
             border-radius: 20px;
             padding: 10px;
 
             &:hover {
-                background: -webkit-linear-gradient(254deg, #fde577, #e01b24);
-                background: linear-gradient(254deg, #fde577, #e01b24);
+                outline: none;
+                    background: -webkit-linear-gradient(90deg, #fde577, #e01b24);
+                    background: linear-gradient(90deg, #fde577, #e01b24);
             }
         }
 

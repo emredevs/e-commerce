@@ -1,9 +1,11 @@
 "use client";
 import { ShopList, ShopListAxios } from "@/types/shop-list/type";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "./styles.module.css";
+import ShopContext from "@/context";
 export default function ShopList() {
+  const { basket, setBasket } = useContext(ShopContext) as any;
   const [shopList, setShopList] = useState<ShopList[]>([]);
   useEffect(() => {
     axios
@@ -11,6 +13,7 @@ export default function ShopList() {
       .then((res) => setShopList(res.data));
   }, []);
   console.log(shopList);
+  console.log("sepet", basket);
   return (
     <div className={styles.shopListContainer}>
       {shopList?.map((shopList) => (
@@ -26,7 +29,11 @@ export default function ShopList() {
             <span>Rateing:{shopList.rating.rate}</span>
           </div>
 
-          <button>Sepete Ekle</button>
+          <button
+            onClick={() => setBasket((prev: string[]) => [...prev, shopList])}
+          >
+            Sepete Ekle
+          </button>
         </div>
       ))}
     </div>

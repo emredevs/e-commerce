@@ -5,7 +5,7 @@ import styles from "./styles.module.css";
 import ShopContext from "@/context";
 import Navbar from "../navbar";
 export default function Header() {
-  const { findUser, setFindUser } = useContext(ShopContext) as any;
+  const { findUser, setFindUser, basket } = useContext(ShopContext) as any;
   //   interface User {
   //     username: string;
   //     password: string;
@@ -41,6 +41,24 @@ export default function Header() {
             }}
           >
             out
+          </button>
+
+          <button>
+            <Link href={"/basket"}>
+              Basket
+              <sup
+                style={{
+                  fontSize: "large",
+                  border: "1px solid gray",
+                  borderRadius: "50%",
+                  padding: "2px 5px",
+                  color: "black",
+                  backgroundColor: "white",
+                }}
+              >
+                {basket.length}
+              </sup>
+            </Link>
           </button>
         </div>
       )}

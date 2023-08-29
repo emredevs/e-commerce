@@ -3,7 +3,7 @@
   margin: 5vh auto;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 5vh;
 }
@@ -27,13 +27,16 @@
   height: 250px;
 }
 .shopListContainer .ShopListBox button {
-  background: linear-gradient(90deg, #fde577, #e01b24);
+  width: 90%;
+  font-size: large;
+  font-weight: 600;
   cursor: pointer;
   border: none;
-  outline: none;
+  outline: 2px solid #e01b24;
   border-radius: 20px;
   padding: 10px;
 }
 .shopListContainer .ShopListBox button:hover {
-  background: linear-gradient(254deg, #fde577, #e01b24);
+  outline: none;
+  background: linear-gradient(90deg, #fde577, #e01b24);
 }/*# sourceMappingURL=styles.module.css.map */

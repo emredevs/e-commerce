@@ -12,6 +12,7 @@ export default function Login() {
   const userInfo: User[] = JSON.parse(
     localStorage.getItem("userLogin") || "[]"
   );
+  // context API kullanamdan önceki state yönetimi
   // const [findUser, setFindUser] = useState<User | undefined>(
   //   JSON.parse(localStorage.getItem("giris") || "[]")
   // );
