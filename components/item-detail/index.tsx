@@ -45,10 +45,10 @@ const ItemDetail: FunctionComponent<Iparams> = ({ params }) => {
             </div>
             <button
               onClick={() => {
-                setBasket((prev: string[]) => [...prev, detail]);
-                setTotalPrice(
-                  (prev: number) => prev + parseFloat(detail.price)
-                );
+                if (detail?.price !== undefined) {
+                  setBasket((prev: string[]) => [...prev, detail]);
+                  setTotalPrice((prev: number) => prev + detail.price);
+                }
               }}
             >
               Add To Basket
