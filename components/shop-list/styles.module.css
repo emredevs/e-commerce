@@ -22,7 +22,7 @@
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-.shopListContainer .ShopListBox img {
+.shopListContainer .ShopListBox a img {
   width: 100%;
   height: 300px;
 }

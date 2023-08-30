@@ -1,0 +1,60 @@
+.detailContainer {
+  width: 90%;
+  margin: 30px auto 0 auto;
+}
+.detailContainer .detailInfo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin: 40px 0px;
+}
+.detailContainer .detailInfo img {
+  width: 25%;
+  height: 300px;
+  margin: 0px;
+  margin-right: 30px;
+}
+.detailContainer .detailInfo .detailBox {
+  width: 50%;
+  margin: 30px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.detailContainer .detailInfo .detailBox button {
+  width: 50%;
+  font-size: large;
+  font-weight: 600;
+  margin-top: 10px;
+  cursor: pointer;
+  border: none;
+  outline: 2px solid #e01b24;
+  border-radius: 20px;
+  padding: 10px;
+}
+.detailContainer .detailInfo .detailBox button:hover {
+  outline: none;
+  background: linear-gradient(90deg, #fde577, #e01b24);
+}
+
+@media (max-width: 700px) {
+  .detailContainer {
+    width: 95%;
+    margin: 40px auto;
+  }
+  .detailContainer .detailInfo {
+    width: 100%;
+  }
+  .detailContainer .detailInfo img {
+    width: 50%;
+    margin: 0 auto;
+  }
+  .detailContainer .detailInfo .detailBox {
+    border: 1px solid gray;
+    padding: 10px;
+    border-radius: 20px;
+    width: 100%;
+  }
+}/*# sourceMappingURL=styles.module.css.map */

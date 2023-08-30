@@ -1,17 +1,22 @@
 "use client";
 import ShopContext from "@/context";
 import React, { useContext } from "react";
-import HighlightOffIcon from "@mui/icons-material/HighlightOff";
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+
 import styles from "./styles.module.css";
 export default function Basket() {
-  const { basket, setBasket } = useContext(ShopContext) as any;
+  const { basket, setBasket, totalPrice, setTotalPrice } = useContext(
+    ShopContext
+  ) as any;
+
   const deleteBtn = (e: string) => {
-    const filterDelete = basket.filter((item: any, i: string) => i !== e);
+    const filterDelete = basket.filter((_: any, i: string) => i !== e);
     setBasket(filterDelete);
   };
 
   return (
     <div className={styles.basketContainer}>
+      <h2>Total Price:{totalPrice.toFixed(2)}$</h2>
       {basket.map((item: any, index: string) => (
         <div className={styles.basketBox} key={index}>
           <div className={styles.basketInfo}>
@@ -20,10 +25,13 @@ export default function Basket() {
             <div>{item.price}$</div>
           </div>
 
-          <HighlightOffIcon
+          <DeleteForeverIcon
             sx={{ color: "red", fontSize: "50px", cursor: "pointer" }}
             id={index}
-            onClick={() => deleteBtn(index)}
+            onClick={() => {
+              deleteBtn(index);
+              setTotalPrice((prev: number) => prev - parseFloat(item.price));
+            }}
           />
         </div>
       ))}

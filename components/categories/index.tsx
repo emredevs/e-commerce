@@ -9,13 +9,14 @@ import React, {
 } from "react";
 import styles from "../shop-list/styles.module.css";
 import ShopContext from "@/context";
+import Link from "next/link";
 interface Iparams {
   params: string;
 }
 
 const Catagories: FunctionComponent<Iparams> = ({ params }) => {
   const [cate, setCate] = useState<Categories[]>([]);
-  const { setBasket } = useContext(ShopContext) as any;
+  const { setBasket, setTotalPrice } = useContext(ShopContext) as any;
   useEffect(() => {
     axios
       .get<CategoriesAxios>(
@@ -29,21 +30,25 @@ const Catagories: FunctionComponent<Iparams> = ({ params }) => {
     <div className={styles.shopListContainer}>
       {cate?.map((cate) => (
         <div className={styles.ShopListBox} key={cate.id}>
-          <img src={cate.image} alt={cate.title} />
-          <h3>
-            {cate?.title.length > 20
-              ? cate.title.slice(0, 20) + "..."
-              : cate.title}
-          </h3>
-          <div>
-            <span>Price:{cate.price}$</span>{" "}
-            <span>Rateing:{cate.rating.rate}</span>
-          </div>
-
+          <Link href={`/detail/${cate.id}`}>
+            <img src={cate.image} alt={cate.title} />
+            <h3>
+              {cate?.title.length > 20
+                ? cate.title.slice(0, 20) + "..."
+                : cate.title}
+            </h3>
+            <div>
+              <span>Price:{cate.price}$</span>{" "}
+              <span>Rateing:{cate.rating.rate}</span>
+            </div>
+          </Link>
           <button
-            onClick={() => setBasket((prev: string[]) => [...prev, cate])}
+            onClick={() => {
+              setBasket((prev: string[]) => [...prev, cate]);
+              setTotalPrice((prev: number) => prev + cate.price);
+            }}
           >
-            Sepete Ekle
+            Add To Basket
           </button>
         </div>
       ))}
