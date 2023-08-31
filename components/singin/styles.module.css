@@ -40,4 +40,25 @@
 .singInContainer button:hover {
   color: white;
   background: linear-gradient(90deg, #e45c01, #f78502, #f79b45);
+}
+
+@media (max-width: 1000px) {
+  .singInContainer {
+    width: 50%;
+  }
+}
+@media (max-width: 800px) {
+  .singInContainer {
+    width: 70%;
+  }
+}
+@media (max-width: 600px) {
+  .singInContainer {
+    width: 85%;
+  }
+}
+@media (max-width: 380px) {
+  .singInContainer {
+    width: 95%;
+  }
 }/*# sourceMappingURL=styles.module.css.map */
