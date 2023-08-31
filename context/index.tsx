@@ -1,7 +1,7 @@
 "use client";
 
-import React, { createContext, useState, ReactNode } from "react";
-
+import React, { createContext, useState, ReactNode, useEffect } from "react";
+import Cookies from "universal-cookie";
 interface User {
   username: string;
   password: string;
@@ -27,19 +27,22 @@ interface ShopContextProviderProps {
 }
 
 export function ShopContextProvider({ children }: ShopContextProviderProps) {
-  const [user, setUser] = useState<User[] | undefined>(
-    JSON.parse(localStorage.getItem("userLogin") || "[]")
-  );
-  const [findUser, setFindUser] = useState<User | undefined>(
-    JSON.parse(localStorage.getItem("giris") || "[]")
-  );
+  const cookies = new Cookies();
+  const [user, setUser] = useState<User[] | undefined>([]);
+  const [findUser, setFindUser] = useState<User | undefined>();
   const [userLogin, setUserLogin] = useState<User>({
     username: "",
     password: "",
   });
   const [basket, setBasket] = useState<string[]>([]);
   const [totalPrice, setTotalPrice] = useState<number>(0);
+  useEffect(() => {
+    const storedUser = cookies.get("userLogin") || [];
+    const storedFindUser = cookies.get("giris") || undefined;
 
+    setUser(storedUser);
+    setFindUser(storedFindUser);
+  }, []);
   const values: ShopContextType = {
     user,
     setUser,

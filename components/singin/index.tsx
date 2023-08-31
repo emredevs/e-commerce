@@ -1,12 +1,15 @@
 "use client";
 import ShopContext from "@/context";
+import Cookies from "universal-cookie";
 import { useRouter } from "next/navigation";
 import React, { useContext } from "react";
 import styles from "./styles.module.css";
 export default function Singin() {
+  const cookies = new Cookies();
   const { user, setUser, userLogin, setUserLogin } = useContext(
     ShopContext
   ) as any;
+
   interface Login {
     username: string;
     password: string;
@@ -38,10 +41,10 @@ export default function Singin() {
       return;
     }
     setUser([...user, userLogin]);
-    localStorage.setItem("userLogin", JSON.stringify([...user, userLogin]));
+    cookies.set("userLogin", [...user, userLogin]);
     setUserLogin({ username: "", password: "" });
     alert("kayıt başarılı");
-    localStorage.setItem("giris", JSON.stringify(""));
+    cookies.set("giris", "");
 
     router.push("/login");
   };

@@ -1,11 +1,15 @@
 "use client";
 import Link from "next/link";
+import Cookies from "universal-cookie";
+
 import React, { useContext } from "react";
 import styles from "./styles.module.css";
 import ShopContext from "@/context";
 import Navbar from "../navbar";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 export default function Header() {
+  const cookies = new Cookies();
+
   const { findUser, setFindUser, basket } = useContext(ShopContext) as any;
   //   interface User {
   //     username: string;
@@ -40,7 +44,7 @@ export default function Header() {
           <button
             onClick={() => {
               setFindUser({ username: "", password: "" });
-              localStorage.setItem("giris", JSON.stringify(""));
+              cookies.set("giris", "");
             }}
           >
             out

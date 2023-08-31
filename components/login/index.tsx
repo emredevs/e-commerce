@@ -1,17 +1,17 @@
 "use client";
 import ShopContext from "@/context";
+import Cookies from "universal-cookie";
 import { useRouter } from "next/navigation";
 import React, { useContext, useState } from "react";
 import styles from "../singin/styles.module.css";
 export default function Login() {
+  const cookies = new Cookies();
   const { findUser, setFindUser } = useContext(ShopContext) as any;
   interface User {
     username: string;
     password: string;
   }
-  const userInfo: User[] = JSON.parse(
-    localStorage.getItem("userLogin") || "[]"
-  );
+  const userInfo: User[] = cookies.get("userLogin") || "[]";
   // context API kullanamdan önceki state yönetimi
   // const [findUser, setFindUser] = useState<User | undefined>(
   //   JSON.parse(localStorage.getItem("giris") || "[]")
@@ -36,7 +36,7 @@ export default function Login() {
       return;
     } else alert("giriş başarılı");
     setFindUser(userSingin);
-    localStorage.setItem("giris", JSON.stringify(userSingin));
+    cookies.set("giris", userSingin);
     router.push("/");
   };
 
